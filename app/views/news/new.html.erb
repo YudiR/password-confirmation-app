@@ -1,10 +1,18 @@
 <h1>News#new</h1>
-<%= form_for @user, url: news_index_path(@user) , controller: 'news', action: 'create' do |f| %>
+
+<% if @user.errors.any? %>
+    <ul>
+        <% @user.errors.full_messages.each do |m| %>
+            <li> <%= m %> </li>
+        <% end %>
+    </ul>
+<%end%>
+<%= form_for @user, :url => news_index_path do |f| %>
     <%=f.label :name %>
     <%=f.text_field :name %>
 
     <%=f.label :email %>
-    <%=f.text_field :email %>
+    <%=f.email_field :email %>
 
     <%=f.label :password %>
     <%=f.password_field :password %>
