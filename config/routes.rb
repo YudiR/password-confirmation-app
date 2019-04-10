@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :news, only: %i(new create index)
+ 
+
+  resources :users, only: %i(new create)
   resource :sessions, only: %i(new create destroy)
-  root 'news#index'
+  resources :articles
+
+  root 'articles#index'
  
 end
