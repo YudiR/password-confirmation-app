@@ -1,2 +1,14 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<h1>Super Exclusive articles</h1>
+
+<% if @articles.count > 0 %>
+  <% @articles.each do |article| %>
+    <h3>
+      <%= link_to article.title, article_path(article) %>
+    </h3>
+    <p><%= article.content %></p>
+  <% end %>
+<% else %>
+  <p>No Articles found.</p>
+<% end %>
+
+<%= link_to "Open a New Article", new_article_path %>
